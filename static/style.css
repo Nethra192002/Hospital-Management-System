@@ -1,0 +1,109 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0; 
+    font-family: Arial, sans-serif;
+    background-image: url('bg3.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+}
+
+
+
+.login-container {
+    position: absolute; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    background: rgba(255, 255, 255, 0.511);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    height: 300px;
+    border: 1px solid #00000065;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    
+}
+
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    border: 0.5px solid #00000028;
+}
+
+.form-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.login-button {
+    background-color: #0a83ed;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100px;
+}
+
+.login-button:hover {
+    background-color: #60a6f5;
+}
+
+.register-link {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.register-link a {
+    color: #127def;
+    text-decoration: none;
+}
+
+.forgot-password {
+    color: #127def;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+input {
+    width: 100%; 
+    padding: 20px; 
+    margin: 8px 0; 
+    display: inline-block; 
+    border: 1px solid #ccc; 
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: 1.5; 
+    
+}
+
+
+textarea {
+    line-height: 1.5; 
+    height: auto;
+    padding: 40px; 
+    
+}
+

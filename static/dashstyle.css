@@ -1,0 +1,241 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center; 
+    background-image: url('bg4.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.sidenav {
+    height: 100%;
+    width: 250px; 
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111; 
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidenav a {
+    padding: 16px 16px 16px 32px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #fff;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1; 
+    background-color: #575757; 
+}
+
+.main {
+    flex-grow: 1; 
+    padding: 16px;
+    margin-left: 250px; 
+    transition: margin-left 0.3s;
+    overflow: hidden;
+    font-size:24px;
+    color: white;
+}
+
+.main h2 {
+    text-align: center; 
+}
+
+.section {
+    margin-top: 0px; 
+}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0 auto; 
+    background-color: transparent; 
+    color: white; 
+}
+
+th, td {
+    text-align: left;
+    font-size:24px;
+    padding: 8px;
+    border: 1px solid white;
+    height: 50px; 
+}
+
+th {
+    background-color: transparent; 
+    color: white; 
+}
+
+tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.1); 
+}
+
+tr:nth-child(odd) {
+    background-color: transparent; 
+}
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+.delete-btn{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(215, 11, 11, 0.475);
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: rgba(253, 15, 15, 0.76);
+    cursor: pointer;
+}
+
+
+#addForm,#addAppt,#addPatient,#addDiagnose,#addAppointment,#addPatient1 {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    width: auto;
+    max-width: 450px;
+}
+
+#addForm h4,#addAppt h4,#addPatient h4,#addDiagnose h4,#addAppointment h4,#addPatient1 h4{
+    margin-bottom: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-item {
+    display: grid;
+    grid-template-columns: minmax(150px, auto) 1fr; 
+    gap: 5px; 
+    align-items: center;
+    margin-bottom: 10px; 
+}
+
+form label {
+    justify-self: end;
+    padding-right: 10px;
+}
+
+form input[type="text"],
+form input[type="submit"] {
+    justify-self: start;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 90%; 
+}
+
+form input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+}
+
+form input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+button {
+    padding: 8px 16px;
+    background-color: #37d151b9;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #18a42fb9;
+}
+
+.profile-container {
+    margin-top: 0px;;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: auto;
+
+}
+
+.profile-card {
+    background-color: #ffffff2a;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    overflow: hidden;
+    border: 1px solid #fff;
+}
+
+.card-header {
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff1d;
+    position: relative;
+    padding-top: 30px; 
+    border: 0.2px solid #ffffff82;
+}
+
+.profile-picture {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #fdfdfd;
+    position: absolute;
+    top: 10px; 
+    left: calc(50% - 50px);
+}
+
+.header-text {
+    padding-top: 100px; 
+}
+
+.card-header h2, .card-header h3, .card-header p {
+    margin: 0;
+    color: #000000;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-info p {
+    margin: 5px 0;
+    color: #333;
+}
+
+.card-actions {
+    text-align: center;
+    padding-top: 10px;
+}
+
+.btn {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='dashstyle.css') }}">
+
+</head>
+<body>
+
+    <div class="sidenav">
+        <a href="#appointment" onclick="showSection('appointment')">Appointment</a>
+        <a href="#diagnose" onclick="showSection('diagnose')">Diagnosis</a>
+        <a href="#patientlist" onclick="showSection('patientlist')">Patient History</a>
+        <a href="#department" onclick="showSection('department')">Department</a>
+        <a href="/logout">Logout</a>
+    </div>
+
+    <div class="main">
+        <div class="profile-container">
+            <div class="profile-card">
+                <div class="card-header">
+                    <img class="profile-picture">
+                    <div class="header-text">
+                        <h2>Welcome, {{ patient_info[0] }}</h2>
+                        <p>Patient</p>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p>Address: {{patient_info[1] }}</p>
+                    <p>Email: {{ patient_info[3] }}</p>
+                    <p>Gender: {{ patient_info[2]}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="appointment" class="section">
+            <h3>Appointment:</h3>
+            <table border="1">
+                <tr>
+                    <th>Doctor ID</th>
+                    <th>Patient Name</th>
+                    <th>Date</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Status</th>
+                    
+                </tr>
+                {% for appt in appt_info %}
+                <tr>
+                    <td>{{ appt[0] }}</td>
+                    <td>{{ appt[1] }}</td>
+                    <td>{{ appt[3] }}</td>
+                    <td>{{ appt[4] }}</td>
+                    <td>{{ appt[5] }}</td>
+                    <td>{{ appt[6] }}</td>
+                    <td>
+                        <button class='delete-btn' onclick="deleteAppointment('{{ appt[0] }}', '{{ appt[1] }}','{{ appt[3] }}')">Delete</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+            <div id="addAppointment" style="display: none;">
+                <h4>Add Appointment:</h4>
+                <form action="/add_appointment" method="post">
+                    <div class="form-item">
+                        <label for="doctor_id">Doctor_id:</label>
+                        <input type="text" id="doctor_id" name="doctor_id">
+                    </div>
+                    <div class="form-item">
+                        <label for="p_name">Your Name:</label>
+                        <input type="text" id="p_name" name="p_name">
+                    </div>
+                    <div class="form-item">
+                        <label for="date">Date:</label>
+                        <input type="text" id="date" name="date">
+                    </div>
+                    <div class="form-item">
+                        <label for="start_time">Start Time:</label>
+                        <input type="text" id="start_time" name="start_time">
+                    </div>
+                    <div class="form-item">
+                        <label for="end_time">End Time:</label>
+                        <input type="text" id="end_time" name="end_time">
+                    </div>
+                    <div class="form-item">
+                        <label for="status">Status:</label>
+                        <input type="text" id="status" name="status">
+                    </div>
+                    <input type="submit" value="SUBMIT">
+                </form>
+            </div>
+               
+            <button onclick="showAddAppointmentForm()">Add Appointment</button>
+            <button onclick="hideAddAppointmentForm()">Cancel</button>
+        </div>
+
+        <div id="diagnose" class="section">
+            <h3>Diagnosis:</h3>
+            <table border="1">
+                <tr>
+                    <th>Doctor ID</th>
+                    <th>Patient Name</th>
+                    <th>Diagnosis</th>
+                    <th>Prescription</th>
+                </tr>
+                {% for diag in diagnose_info %}
+                <tr>
+                    <td>{{ diag[0] }}</td>
+                    <td>{{ diag[1] }}</td>
+                    <td>{{ diag[3] }}</td>
+                    <td>{{ diag[4] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div id="patientlist" class="section">
+            <h3>Patient History:</h3>
+            <table border="1">
+                <tr>
+                    <th>Doctor ID</th>
+                    <th>Patient Name</th>
+                    <th>Previous Doctor</th>
+                    <th>Date</th>
+                    <th>Conditions</th>
+                    <th>Surgeries</th>
+                    <th>Medications</th>
+                </tr>
+                {% for pl in patientlist_info %}
+                <tr>
+                    <td>{{ pl[0] }}</td>
+                    <td>{{ pl[1] }}</td>
+                    <td>{{ pl[3] }}</td>
+                    <td>{{ pl[4] }}</td>
+                    <td>{{ pl[5] }}</td>
+                    <td>{{ pl[6] }}</td>
+                    <td>{{ pl[7] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            <div id="addPatient1" style="display: none;">
+                <h4>Add Your Medical History:</h4>
+                <form action="/add_patient1" method="post">
+                    <div class="form-item">
+                        <label for="doctor_id">Doctor ID:</label>
+                        <input type="text" id="doctor_id" name="doctor_id">
+                    </div>
+                    <div class="form-item">
+                        <label for="p_name">Your Name:</label>
+                        <input type="text" id="p_name" name="p_name">
+                    </div>
+                    <div class="form-item">
+                        <label for="prev_doc">Prev Doctor:</label>
+                        <input type="text" id="prev_doc" name="prev_doc">
+                    </div>
+                    <div class="form-item">
+                        <label for="date">Date:</label>
+                        <input type="text" id="date" name="date">
+                    </div>
+                    <div class="form-item">
+                        <label for="conditions">Conditions:</label>
+                        <input type="text" id="conditions" name="conditions">
+                    </div>
+                    <div class="form-item">
+                        <label for="surgeries">Surgeries:</label>
+                        <input type="text" id="surgeries" name="surgeries">
+                    </div>
+                    <div class="form-item">
+                        <label for="medication">Medication:</label>
+                        <input type="text" id="medication" name="medication">
+                    </div>
+                    <input type="submit" value="SUBMIT">
+                </form>
+            </div>
+            
+            <button onclick="showAddPatientForm()">Add Patient Record</button>
+            <button onclick="hidePatientForm()">Cancel</button>
+            
+        </div>
+        <div id="department" class="section">
+            <h3>Department:</h3>
+            <table border="1">
+                <tr>
+                    <th>Department ID</th>
+                     <th>Department Name</th>
+                </tr>
+                {% for dept in dept_info %}
+                <tr>
+                    <td>{{ dept[0] }}</td>
+                    <td>{{ dept[1] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            var sections = document.querySelectorAll('.section');
+            sections.forEach(function(section) {
+                if (section.id === sectionId) {
+                    section.classList.add('active');
+                } else {
+                    section.classList.remove('active');
+                }
+            });
+        }
+        function showAddAppointmentForm() {
+            document.getElementById("addAppointment").style.display = "block";
+        }
+
+        function hideAddAppointmentForm() {
+            document.getElementById("addAppointment").style.display = "none";
+        }
+
+        function deleteAppointment(doctor_id, p_name, date) {
+            var confirmDelete = confirm("Are you sure you want to delete this Appointment?");
+            if (confirmDelete) {
+                let formData = new URLSearchParams();
+                formData.append("doctor_id", doctor_id);
+                formData.append("p_name", p_name);
+                formData.append("date", date);
+                // Assuming p_email needs to be included from session, hence not adding here
+
+                fetch("/delete_appointment", {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: formData
+                })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.reload();
+                    } else {
+                        alert("Failed to delete Appointment");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                });
+            }
+        }
+
+        function showAddPatientForm() {
+            document.getElementById('addPatient1').style.display = 'block';
+        }
+        function hidePatientForm() {
+            document.getElementById("addPatient1").style.display = "none";
+        }
+
+    
+
+    </script>
+</body>
+</html>
